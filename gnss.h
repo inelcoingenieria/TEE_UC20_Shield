@@ -10,7 +10,7 @@ public:
 	GNSS();
 	bool Start();
 	bool Stop();
-	String GetPosition();
+	String GetPosition(unsigned char mode=2);
 	bool EnableNMEA();
 	bool DisableNMEA();
 	String GetNMEA(String nmea);

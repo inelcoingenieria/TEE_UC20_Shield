@@ -53,9 +53,10 @@ String GNSS:: GetNMEA(String nmea)
 	}			
 	
 }
-String GNSS:: GetPosition()
+String GNSS:: GetPosition(unsigned char mode)
 {
-	gsm.println(F("AT+QGPSLOC?"));
+	gsm.print(F("AT+QGPSLOC="));
+	gsm.println(String(mode));
 	//+CME ERROR: 516  no fix
 	unsigned long previousMillis_timeout = millis();
 	unsigned long currentMillis;
