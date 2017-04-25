@@ -7,8 +7,6 @@
 #define ANTO_PORT        "1883"
 #define ANTO_ID          "3G"
 
-//#define MQTT_USER        "settakan"
-//#define MQTT_PASSWORD    "HZaAaDn4smPefzlwXcvbRrlDkYZZAaMWtO4jh6q4"
 
 
 
