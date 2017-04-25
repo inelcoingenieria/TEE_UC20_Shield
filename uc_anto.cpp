@@ -3,33 +3,28 @@
 
 UCxMQTT mqtt;
 
-
+void fn_null(String topic ,String msg){}
 UCxANTO::anto()
 {
-	//antocallback = func_null;
-	//AntoIO::AntoIO(const char *user, const char *token, const char *thing, const char *client_id): 
-    
-	//mqtt(client_id, ANTO_BROKER, ANTO_BROKER_PORT),_user(user), _token(token), _thing(thing)
+	//rx_sub = fn_null; 
 }
 
-void  callback_(String topic ,char *playload,unsigned char length)
+/*void callback_(String topic ,char *playload,unsigned char length)
 {
-	Serial.println();
-  Serial.println(F("%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
-  Serial.print(F("Topic --> "));
-  Serial.println(topic);
-  playload[length]=0;
-  String str_data(playload);
-  Serial.print(F("Playload --> "));
-  Serial.println(str_data);
+	//playload[length]=0;
+	//String str_data(playload);
+	
+	//UCxANTO::(*rx_sub)(topic,str_data);
 }
-
-void UCxANTO :: begin(String username,String password,String name)
+*/
+void UCxANTO :: begin(String username,String password,String name_)
 {
 	anto_USER = username;
 	anto_PASS = password;
-	anto_Thing = name;
-	mqtt.callback = callback_;
+	anto_Thing = name_;
+	//func_map(mqtt_sub);
+	//mqtt.callback = callback_;
+	//gsm.println(F("AT&D0"));
 }
 
 bool UCxANTO :: connectServer()
@@ -76,12 +71,17 @@ void UCxANTO :: sub(String channel)
 bool UCxANTO :: loop()
 {
 	mqtt.MqttLoop();
-	if(!mqtt.ConnectState())
-     return(true);
-	return(false);
+	return(mqtt.ConnectState());
 }
 
-
+void UCxANTO :: func_map(void (*callback)(String topic ,char *playload,unsigned char length))
+{
+	mqtt.callback = (*callback);
+}
+void UCxANTO :: mqtt_sub(String topic ,char *playload,unsigned char length)
+{
+	
+}
 
 
 

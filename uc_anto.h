@@ -14,18 +14,19 @@ class UCxANTO
 {
 	public:
 	anto();
-	void begin(String username,String password,String name);
+	void begin(String username,String password,String name_);
 	bool connectServer();
 	void pub(String channel,String msg);
 	void pub(String channel,int msg);
 	void sub(String channel);
 	bool loop();
-	//void callback_(String topic ,char *playload,unsigned char length);
-	
+	void func_map(void (*callback)(String topic ,char *playload,unsigned char length));
+	void mqtt_sub(String topic ,char *playload,unsigned char length);
 	private:
 	String anto_USER;
 	String anto_PASS;
 	String anto_Thing;
+	//void callback_(String topic ,char *playload,unsigned char length);
 
 };
 

@@ -6,7 +6,7 @@ unsigned int len_buffer_in_module = 0;
 void func_null(String topic ,char *playload,unsigned char length){}
 
 const long interval_ping = 10000; 
-unsigned long previousMillis_ping; 
+unsigned long previousMillis_ping=0; 
 unsigned long currentMillis_ping;  
 	
 UCxMQTT::UCxMQTT()
@@ -334,7 +334,7 @@ void UCxMQTT:: clear_buffer()
 	{
 		buffer[i]=0;
 	}
-	gsm.flush();
+	//gsm.flush();
 }
 void UCxMQTT::Ping()
 {
@@ -349,10 +349,22 @@ void UCxMQTT::MqttLoop()
 	currentMillis_ping = millis();
 	static bool ping_flag=true;
 	
-	if(gsm.available())
+	
+	currentMillis_ping = millis();
+	if(currentMillis_ping - previousMillis_ping >= interval_ping) 
+	{
+		Serial.println("start ping");
+		Ping();
+		previousMillis_ping = currentMillis_ping ;
+	}					
+	
+	
+	
+	
+	/*if(gsm.available())
 	{
 			String req = gsm.readStringUntil('\r');
-			//Serial.println(req);
+			Serial.println(req);
 			if(req.indexOf(F("+QIURC: \"closed\""))!= -1)
 			{
 				connected = false;
@@ -360,21 +372,23 @@ void UCxMQTT::MqttLoop()
 				return;
 			}
 
-	}
+	}			
+		*/		
 				unsigned int buf_cnt=0;
 				while(1)
 				{
 					unsigned int len_in_buffer = ReadDataInBufferMode(1);
 					if(len_in_buffer==0)
 					{
+						//Serial.print(".");
 						clear_buffer();
 						return;						
 					}
-					//Serial.println(buffer[0],HEX);
+					Serial.println(buffer[0],HEX);
 					switch (buffer[0])
 					{
 						case 0x30: // rx_sub
-						Serial.println("rx sub");
+						Serial.print("\r\nrx sub");
 							check_rx_sub();
 							return;
 						break;
@@ -403,16 +417,9 @@ void UCxMQTT::MqttLoop()
 							return;							
 						break;
 					}
-					
-					currentMillis_ping = millis();
-					if(currentMillis_ping - previousMillis_ping >= interval_ping) 
-					{
-						Ping();
-						previousMillis_ping = currentMillis_ping ;
-					}					
-				}
-				
-	
+					if(connected==0)
+						return;
+				}			
 	
 }
 
@@ -479,7 +486,7 @@ unsigned int UCxMQTT::ReadDataInBufferMode(unsigned int buf_len)
 				return(ret);
 		}
 	}
-	gsm.flush();
+	//gsm.flush();
 		return(re_turn);
 }
 bool UCxMQTT::ConnectState()
