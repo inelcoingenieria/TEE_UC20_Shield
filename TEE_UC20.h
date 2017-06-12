@@ -58,6 +58,7 @@ public:
 	size_t print(String data,int type);
 	size_t println (String data,int type);
 	String readStringUntil(char data);
+	void  my_flush();
 protected:
 	 Stream *_Serial;
 };

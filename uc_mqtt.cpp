@@ -353,7 +353,7 @@ void UCxMQTT::MqttLoop()
 	currentMillis_ping = millis();
 	if(currentMillis_ping - previousMillis_ping >= interval_ping) 
 	{
-		Serial.println("start ping");
+		//Serial.println("start ping");
 		Ping();
 		previousMillis_ping = currentMillis_ping ;
 	}					
@@ -388,7 +388,7 @@ void UCxMQTT::MqttLoop()
 					switch (buffer[0])
 					{
 						case 0x30: // rx_sub
-						Serial.print("\r\nrx sub");
+						//Serial.print("\r\nrx sub");
 							check_rx_sub();
 							return;
 						break;
@@ -398,7 +398,7 @@ void UCxMQTT::MqttLoop()
 							{
 								connected = true;
 								ping_flag = true;
-								Serial.println("ping ok");
+								//Serial.println("ping ok");
 								return;
 							}
 							else
@@ -412,7 +412,7 @@ void UCxMQTT::MqttLoop()
 							
 						break;
 						default:
-							Serial.println("tout");
+							//Serial.println("tout");
 							clear_buffer();
 							return;							
 						break;

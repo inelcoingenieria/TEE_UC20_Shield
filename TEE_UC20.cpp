@@ -237,18 +237,16 @@ bool UC20::time_out(long timeout_interval)
 }
 bool UC20:: wait_ok(long time)
 {
-	wait_ok_(time,true);
+	return wait_ok_(time,true);
 }
 bool UC20:: wait_ok_ndb(long time)
 {
-	wait_ok_(time,false);
+	return wait_ok_(time,false);
 }
 	
 bool UC20:: wait_ok_(long time,bool ack)
 {
-	while(!_Serial->available())
-	{}
-	start_time_out();
+	unsigned long previousMillis = millis(); 
 	while(1)
 	{
 		String req = _Serial->readStringUntil('\n');
@@ -265,13 +263,17 @@ bool UC20:: wait_ok_(long time,bool ack)
 			return(0);
 		}
 		//debug(req);	
+		unsigned long currentMillis = millis();
+		if(currentMillis - previousMillis >= time) 
+		{
+			previousMillis = currentMillis;
+			if(ack)
+			debug(F("Error"));
+			return(0);
+		}			
+
 	}
-	if(time_out(time))
-	{
-		if(ack)
-		debug(F("Error"));
-		return(0);
-	}
+	
 }
 
 unsigned char UC20:: event_input()
@@ -379,4 +381,12 @@ int UC20:: available()
 void UC20:: flush()
 {
      _Serial->flush();
+}
+
+void UC20 :: my_flush()
+{
+	while(gsm.available())
+	{
+		gsm.read();
+	}
 }
