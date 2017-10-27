@@ -13,7 +13,7 @@
 class UCxANTO
 {
 	public:
-	anto();
+	UCxANTO();
 	void begin(String username,String password,String name_);
 	bool connectServer();
 	void pub(String channel,String msg);

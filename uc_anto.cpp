@@ -4,7 +4,7 @@
 UCxMQTT mqtt_anto;
 
 void fn_null(String topic ,String msg){}
-UCxANTO::anto()
+UCxANTO::UCxANTO()
 {
 	//rx_sub = fn_null; 
 }

@@ -142,7 +142,7 @@ String  FIREBASE :: get(String thing)
 					flag++;
 				if(flag==1)
 				{
-					if((c!=0x0A)&&(c!=0x0D)&&(c_pv!="\""))
+					if((c!=0x0A)&&(c!=0x0D)&&(c_pv!='\"'))
 						data+=c;
 				}
 				c_pv=c;
