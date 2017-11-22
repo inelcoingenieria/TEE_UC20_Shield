@@ -57,7 +57,7 @@ bool LINE_NOTIFY::sendMessage(String message)
 	if(line_ssl.startSend(CLI_ID,0))
 	{
 		flag_line_error=0;
-		send_http2("POST",message);
+		send_http("POST",message);
 		line_ssl.stopSend();
 		line_ssl.waitRead(3000);
 		int len = line_ssl.read(CLI_ID);
