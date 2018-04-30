@@ -52,15 +52,15 @@ void setup()
   connect_server();
 }
 
-void callback(String topic ,char *playload,unsigned char length)
+void callback(String topic ,char *payload,unsigned char length)
 {
   Serial.println();
   Serial.println(F("%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
   Serial.print(F("Topic --> "));
   Serial.println(topic);
-  playload[length]=0;
-  String str_data(playload);
-  Serial.print(F("Playload --> "));
+  payload[length]=0;
+  String str_data(payload);
+  Serial.print(F("Payload --> "));
   Serial.println(str_data);
 }
 void connect_server()

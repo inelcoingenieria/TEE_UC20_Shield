@@ -77,16 +77,19 @@ unsigned char UCxMQTT::Connect(String id,String user,String pass)
 
 			len = pass.length();
 			if(len>0)
-				ctrl_flag |= 1<<6;
-			buffer[length] = (len>>8)&0x00FF;   // id Lengh MSB
-			length++;
-			buffer[length] = len&0x00FF;        // id Lengh LSB
-			length++;
-			for(i=0;i<len;i++)
 			{
-				buffer[length] = pass[i];
+				ctrl_flag |= 1<<6;
+				buffer[length] = (len>>8)&0x00FF;   // id Lengh MSB
 				length++;
+				buffer[length] = len&0x00FF;        // id Lengh LSB
+				length++;
+				for(i=0;i<len;i++)
+				{
+					buffer[length] = pass[i];
+					length++;
+				}
 			}
+			
 			buffer[1]= length-2;
 			buffer[9]=ctrl_flag;
 			
@@ -110,7 +113,10 @@ unsigned char UCxMQTT::Connect(String id,String user,String pass)
 		
 		
 		if(ret==-1)
+		{
 			connected = false;
+			return(0xFF);
+		}
 		else if(buffer[ret]==0)
 			connected = true;
 		else
@@ -214,6 +220,9 @@ String UCxMQTT:: ConnectReturnCode(unsigned char input)
 		break;
 		case 5:
 			return(F("Connection Refused, not authorized"));
+		break;
+		case 0xFF:
+			return(F("TimeOut"));
 		break;
 		default:
 			return(F("Unknow!!!"));
@@ -384,7 +393,7 @@ void UCxMQTT::MqttLoop()
 						clear_buffer();
 						return;						
 					}
-					Serial.println(buffer[0],HEX);
+					//Serial.println(buffer[0],HEX);
 					switch (buffer[0])
 					{
 						case 0x30: // rx_sub
@@ -392,6 +401,13 @@ void UCxMQTT::MqttLoop()
 							check_rx_sub();
 							return;
 						break;
+						
+						case 0x32: // rx_sub + retain
+						//Serial.print("\r\nrx sub");
+							check_rx_sub();
+							return;
+						break;
+						
 						case 0xD0: //ping
 							ReadDataInBufferMode(1);
 							if(buffer[0]==0x00)
@@ -430,6 +446,7 @@ void UCxMQTT::check_rx_sub()
 	unsigned char topic_cnt=0;
 	unsigned char playload_cnt=0;
 	unsigned int i;
+	uint8_t  header = buffer[0]; // sub_head
 	unsigned int len_in_buffer = ReadDataInBufferMode(1);
 	all_byte = buffer[0];
 	len_in_buffer = ReadDataInBufferMode(2);
@@ -453,13 +470,19 @@ void UCxMQTT::check_rx_sub()
 		else
 		{
 			playload[playload_cnt] = buffer[i];
+			//Serial.write(playload[playload_cnt]);
 			playload_cnt++;
-			if(playload_cnt>100)
-				break;
+			//if(playload_cnt>100)
+			//	break;
 		}
 	}
 	topic[topic_cnt]=0;
 		String str_topic(topic);
+	if(header==0x32)
+	{
+		(*callback)(str_topic,playload+2,playload_cnt-2);
+	}
+	else
 		(*callback)(str_topic,playload,playload_cnt);
 }
 
