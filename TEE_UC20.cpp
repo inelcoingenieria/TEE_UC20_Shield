@@ -287,7 +287,7 @@ unsigned char UC20:: event_input()
 			event_type = EVENT_RING;
 			return(EVENT_RING);//EVENT_RING
 		}
-		else if(req.indexOf(F("+CMTI: \"SM\"")) != -1)
+		else if(req.indexOf(F("+CMTI: \"ME\"")) != -1)
 		{
 			event_type = EVENT_SMS;
 			char index = req.indexOf(F(","));
