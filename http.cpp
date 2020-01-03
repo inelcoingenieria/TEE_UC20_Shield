@@ -75,7 +75,7 @@ int HTTP::post(String data)
 	gsm.print("AT+QHTTPPOST=");
 	gsm.print(data.length(),DEC);
 	gsm.println(",80,80");
-	return(data.length(),DEC);
+	//return(data.length(),DEC);
 	while(!gsm.available())
 	{}
 	gsm.start_time_out();
