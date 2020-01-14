@@ -15,6 +15,7 @@ public:
 	bool begin(String host,String auth);
 	int connect();
 	bool set(String thing,String data);
+	bool setStr(String thing,String data);
 	bool setInt(String thing,int data);
 	bool setFloat(String thing,float data);
 	String get(String thing);
