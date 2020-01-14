@@ -82,6 +82,12 @@ bool FIREBASE :: set(String thing,String data)
 		return(false);
 	}
 }
+
+bool FIREBASE :: setStr(String thing,String data)
+{       data = "\"" + data + "\"";
+	return set(thing,String(data));
+}
+
 bool FIREBASE :: setInt(String thing,int data)
 {
 	return set(thing,String(data));
