@@ -73,10 +73,13 @@ void loop()
     { 
       float h = dht.readHumidity();
       float t = dht.readTemperature();
+      String GPS_position = "13.840939, 100.542153";
       Serial.println("Set Temperature = "+String(t));
       firebase.setFloat("Temperature",t);
       Serial.println("Set Humidity = "+String(t));
       firebase.setFloat("Humidity",h);
+      Serial.println("Set GPS  = "+ GPS_position);
+      firebase.setStr("GPS",GPS_position);
       int led = firebase.getInt("LED");
       Serial.println("Get LED = "+String(led));
       if(led==1)
