@@ -1,5 +1,6 @@
 #include "http.h"
 
+SSL http_ssl;
 
 HTTP::HTTP(){}
 bool HTTP::begin(unsigned char context_ID)
@@ -14,6 +15,38 @@ bool HTTP::begin(unsigned char context_ID)
 	gsm.print(F("AT+QHTTPCFG=\"responseheader\","));
 	gsm.print(context_ID,DEC);
 	gsm.println("");
+	
+	int ret=0;
+	ret = http_ssl.sslversion(CONTEX,1);
+	if(ret==1)
+	{
+		ret = http_ssl.ciphersuite(CONTEX,"0xFFFF");
+		if(ret==1)
+		{
+			ret = http_ssl.seclevel(CONTEX,0);
+			if(ret==1)
+			{
+				return(true);
+			}
+			else
+			{
+				gsm.debug (F("seclevel=  = Error"));
+				return(false);
+			}
+		}
+		else
+		{
+			gsm.debug (F("ciphersuite=  = Error"));
+			return(false);
+		}
+			
+	}
+	else
+	{
+		gsm.debug (F("sslver = Error"));
+		return(false);
+	}
+	
 	return(gsm.wait_ok(3000));
 }
 bool HTTP::url(String url)
