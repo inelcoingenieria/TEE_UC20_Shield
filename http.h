@@ -2,7 +2,8 @@
 #define HTTP_h
 
 #include "TEE_UC20.h"
-
+#include "ssl.h"
+#define CONTEX 1
 
 class HTTP
 {
