@@ -16,7 +16,7 @@ FIREBASE firebase;
 #define DHTTYPE DHT22
 #define LED 10
 DHT dht(DHTPIN, DHTTYPE);
-#define FIREBASE_URL      "Firebase URL"
+#define FIREBASE_URL      "Firebase URL"   // Examples "Thaieasyelecxxx.firebaseio.com" Delete https:// and / of back URL 
 #define FIREBASE_SECRET   "Database Secrets"
 unsigned long previousMillis = 0;
 const long interval = 2000; 
