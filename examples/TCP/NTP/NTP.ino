@@ -44,7 +44,7 @@ void setup()
 }
 void loop() 
 {
-  Serial.println(tcp.NTP(1,"time.navy.mi.th","123"));
+  Serial.println(tcp.NTP(1,"1.asia.pool.ntp.org","123"));
   delay(500);
 }
 
