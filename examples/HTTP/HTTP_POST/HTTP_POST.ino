@@ -50,10 +50,10 @@ void setup()
   Serial.println(F("Show My IP"));
   Serial.println(net.GetIP());
   Serial.println(F("Start HTTP"));
-  http.begin(1);
+  http.begin(1); 
   Serial.println(F("Send HTTP POST"));
-  http.url("http://api.openweathermap.org/data/2.5/weather?q=Bangkok&mode=xml&units=metric&appid=44db6a862fba0b067b1930da0d769e98");
-  Serial.println(http.post());
+  http.url("https://postman-echo.com/post");
+  Serial.println(http.post("foo1=bar1&foo2=bar2")); // Body Law Data
   Serial.println(F("Clear data in RAM"));
   file.Delete(RAM,"*");
   Serial.println(F("Save HTTP Response To RAM"));
