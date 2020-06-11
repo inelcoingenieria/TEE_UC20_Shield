@@ -183,7 +183,7 @@ float FIREBASE :: getFloat(String thing)
 	return(get(thing).toFloat());
 }
 
-bool FIREBASE :: push(String thing,String data)
+String FIREBASE :: push(String thing,String data)
 {
 	if(fb_ssl.startSend(CLI_ID,0))
 	{
@@ -211,13 +211,12 @@ bool FIREBASE :: push(String thing,String data)
 	{
 		flag_error=1;
 		gsm.debug (F("OpenSend = Error"));
-		return(false);
+		return("Error");
 	}
 }
 
 String FIREBASE::pushStr(String thing, String data) {
-	push(thing,data);
-	return "";
+	return push(thing,String(data));
 }
 
 bool FIREBASE :: remove(String thing)
