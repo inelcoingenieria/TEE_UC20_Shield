@@ -82,7 +82,7 @@ void loop()
       firebase.setStr("GPS",GPS_position);
       firebase.setBool("Boolean",true);
      
-      String jsObj = "{\"dataTemperature\":" + String(t) + ",\"dataHumidity\":" + String(h) + "}";
+      String jsObj = "{\"dataTemperature\":" + String(t) + ",\"dataHumidity\":" + String(h) + "}";  // Data must be JSON format
       String addpth = firebase.pushStr("/ex_push", jsObj);
       Serial.println("push : " + addpth);
      
