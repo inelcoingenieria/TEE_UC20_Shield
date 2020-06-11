@@ -80,6 +80,7 @@ void loop()
       firebase.setFloat("Humidity",h);
       Serial.println("Set GPS  = "+ GPS_position);
       firebase.setStr("GPS",GPS_position);
+      firebase.setBool("Boolean",true);
       int led = firebase.getInt("LED");
       Serial.println("Get LED = "+String(led));
       if(led==1)
