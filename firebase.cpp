@@ -98,6 +98,13 @@ bool FIREBASE :: setFloat(String thing,float data)
 	return set(thing,String(data));
 }
 
+bool FIREBASE :: setBool(String thing, bool data) {
+	if(data) 
+		return set(thing,"true");
+	else 
+		return set(thing,"false");
+}
+
 void  FIREBASE :: send_http(String http_type,String thing,String data)
 {
 	String out = http_type+" /"+thing+".json?auth="+auth_+" HTTP/1.1";
