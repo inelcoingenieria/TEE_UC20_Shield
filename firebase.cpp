@@ -197,7 +197,7 @@ bool FIREBASE :: push(String thing,String data)
 			if(gsm.available())
 			{
 				String req = gsm.readStringUntil('\n');
-				Serial.println(req);
+				//Serial.println(req);
 				if(req.indexOf(F("name")) != -1) {
 				int index1 = req.indexOf(F(":"))+2;
 				int index2 = req.lastIndexOf(F("\""));
