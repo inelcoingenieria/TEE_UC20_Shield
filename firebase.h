@@ -22,6 +22,10 @@ public:
 	String get(String thing);
 	int getInt(String thing);
 	float getFloat(String thing);
+	
+	bool push(String thing,String data);
+	String pushStr(String thing, String data);
+	
 	bool remove(String thing);
 	bool close();
 	bool  status();
