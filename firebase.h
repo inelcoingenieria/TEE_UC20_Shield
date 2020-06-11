@@ -18,6 +18,7 @@ public:
 	bool setStr(String thing,String data);
 	bool setInt(String thing,int data);
 	bool setFloat(String thing,float data);
+	bool setBool(String thing, bool data);
 	String get(String thing);
 	int getInt(String thing);
 	float getFloat(String thing);
