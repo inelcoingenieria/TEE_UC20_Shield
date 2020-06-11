@@ -182,6 +182,44 @@ float FIREBASE :: getFloat(String thing)
 {
 	return(get(thing).toFloat());
 }
+
+bool FIREBASE :: push(String thing,String data)
+{
+	if(fb_ssl.startSend(CLI_ID,0))
+	{
+		flag_error=0;
+		send_http("POST",thing,data);
+		fb_ssl.stopSend();
+		fb_ssl.waitRead(3000);
+		int len = fb_ssl.read(CLI_ID);
+		while(len)
+		{
+			if(gsm.available())
+			{
+				String req = gsm.readStringUntil('\n');
+				Serial.println(req);
+				if(req.indexOf(F("name")) != -1) {
+				int index1 = req.indexOf(F(":"))+2;
+				int index2 = req.lastIndexOf(F("\""));
+				return req.substring(index1,index2);	// return path
+				}
+			}
+		}
+		
+	}
+	else
+	{
+		flag_error=1;
+		gsm.debug (F("OpenSend = Error"));
+		return(false);
+	}
+}
+
+String FIREBASE::pushStr(String thing, String data) {
+	push(thing,data);
+	return "";
+}
+
 bool FIREBASE :: remove(String thing)
 {
 	if(fb_ssl.startSend(CLI_ID,0))
