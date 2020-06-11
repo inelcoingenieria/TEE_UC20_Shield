@@ -76,22 +76,24 @@ void loop()
       String GPS_position = "13.840939, 100.542153";
       Serial.println("Set Temperature = "+String(t));
       firebase.setFloat("Temperature",t);
-      Serial.println("Set Humidity = "+String(t));
+      Serial.println("Set Humidity = "+String(h));
       firebase.setFloat("Humidity",h);
       Serial.println("Set GPS  = "+ GPS_position);
       firebase.setStr("GPS",GPS_position);
       firebase.setBool("Boolean",true);
      
-      String jsObj = "{\"dataTemperature\":" + String(t) + ",\"dataHumidity\":"+String(h)+"}";
-      firebase.pushStr("/ex_push", jsObj);
+      String jsObj = "{\"dataTemperature\":" + String(t) + ",\"dataHumidity\":" + String(h) + "}";
+      String addpth = firebase.pushStr("/ex_push", jsObj);
+      Serial.println("push : " + addpth);
      
       int led = firebase.getInt("LED");
       Serial.println("Get LED = "+String(led));
-      if(led==1)
+      if(led==1){
               digitalWrite(LED,LOW);
-      else
+              firebase.remove("ex_push");
+      }else{
               digitalWrite(LED,HIGH);
-
+      }
     }
     firebase.close();
     previousMillis = currentMillis;
