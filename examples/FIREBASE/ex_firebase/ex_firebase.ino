@@ -71,8 +71,8 @@ void loop()
    int ret = firebase.connect();
    if(ret==1)
     { 
-      float h = dht.readHumidity();
-      float t = dht.readTemperature();
+      float h = random(0,100); //dht.readHumidity();
+      float t = random(0,50);  //dht.readTemperature();
       String GPS_position = "13.840939, 100.542153";
       Serial.println("Set Temperature = "+String(t));
       firebase.setFloat("Temperature",t);
@@ -81,6 +81,10 @@ void loop()
       Serial.println("Set GPS  = "+ GPS_position);
       firebase.setStr("GPS",GPS_position);
       firebase.setBool("Boolean",true);
+     
+      String jsObj = "{\"dataTemperature\":" + String(t) + ",\"dataHumidity\":"+String(h)+"}";
+      firebase.pushStr("/ex_push", jsObj);
+     
       int led = firebase.getInt("LED");
       Serial.println("Get LED = "+String(led));
       if(led==1)
