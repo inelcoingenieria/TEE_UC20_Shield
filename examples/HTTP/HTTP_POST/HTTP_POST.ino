@@ -53,7 +53,7 @@ void setup()
   http.begin(1); 
   Serial.println(F("Send HTTP POST"));
   http.url("https://postman-echo.com/post");
-  Serial.println(http.post("foo1=bar1&foo2=bar2")); // Body Law Data
+  Serial.println(http.post("foo1=bar1&foo2=bar2")); // Body Raw Data
   Serial.println(F("Clear data in RAM"));
   file.Delete(RAM,"*");
   Serial.println(F("Save HTTP Response To RAM"));
