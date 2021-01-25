@@ -10,15 +10,19 @@
 
 ![Capture](https://user-images.githubusercontent.com/8803501/105672079-64cce180-5f16-11eb-97bb-f9cb0b266c2f.JPG)
 
+
 หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจะตั้ง Baudrate เป็น 115200 bps)
+
 1.ให้ติดตั้ง Library TEE_UC20_Shield โดย Download จาก Lbrary manager โดยไปที่เมนู Sketch >> Include Library >> Mangae Libraries.. ทำการค้นหา TEE_UC20_Shield และติดตั้งดังภาพ
 
 ![image](https://user-images.githubusercontent.com/8803501/105673919-4f0ceb80-5f19-11eb-94b1-946f3156957c.png)
 
 
-2.รันโปรแกรม ATCommand_serial เพิ่มใช้งานโหมด AT command โดยไปที่เมนู File >> Examples >> TEE_UC20_Shield >> ATCommand_serial 
+
+2.รันโปรแกรม ATCommand_serial เพื่อใช้งานโหมด AT command โดยไปที่เมนู File >> Examples >> TEE_UC20_Shield >> ATCommand_serial 
 
 ![image](https://user-images.githubusercontent.com/8803501/105674613-5e406900-5f1a-11eb-8d9d-d8cefa0bf52b.png)
+
 
 
 3. ภายในโปรแกรม ATCommand_serial แก้ไข mySerial.begin(9600); เป็น mySerial.begin(115200); และทำการ upload 
@@ -30,6 +34,7 @@
 4. เปิด Serial monitor โดยไปที่แถวเมนู Tools >> Serial monitor โดยตั้ง baudrate บน Serial monitor เป็น 9600 bps จากนั้นพิมพ์คำสั่ง AT กด Enter จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงบอร์ด Arduino สามารถติดต่อกับตัวโมดูลได้
 
 ![image](https://user-images.githubusercontent.com/8803501/105676107-a2346d80-5f1c-11eb-9255-8db14a6242cb.png)
+
 
 
 5. ส่งคำสั่งเพื่อทำการเปลี่ยน baudrate เป็น 9600 bps โดยใชำคำสั่ง AT+IPR=9600;&W หากตัวโมดูลตอบกลับมาว่า OK หมายถึงได้ทำการเปลี่ยน baudrate เรียบร้อยแล้ว
