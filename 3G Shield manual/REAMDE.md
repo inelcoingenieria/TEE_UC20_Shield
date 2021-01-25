@@ -1,4 +1,4 @@
-ตัวอย่างการใช้งานบอร์ด Arduino Uno R3 ร่วมกับ  3G HAT Expansion for Raspberry Pi (UC20-G)
+ตั96วอย่างการใช้งานบอร์ด Arduino Uno R3 ร่วมกับ  3G HAT Expansion for Raspberry Pi (UC20-G)
 อุปกรณ์ที่ใช้
 1. (EADN014) บอร์ด Arduino Uno R3 https://www.thaieasyelec.com/product/73/arduino-uno-r3-%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%80%E0%B9%80%E0%B8%97%E0%B9%89-100
 2. (ETEE064) 3G HAT Expansion for Raspberry Pi (UC20-G) ***On Sale*** https://www.thaieasyelec.com/product/1096/3g-hat-expansion-for-raspberry-pi-uc20-g
@@ -21,6 +21,12 @@
 ![image](https://user-images.githubusercontent.com/8803501/105674613-5e406900-5f1a-11eb-8d9d-d8cefa0bf52b.png)
 
 
-3. ภายในโปรแกรม ATCommand_serial แก้ไข้ mySerial.begin(9600); เป็น mySerial.begin(115200); และทำการ upload 
+3. ภายในโปรแกรม ATCommand_serial แก้ไข mySerial.begin(9600); เป็น mySerial.begin(115200); และทำการ upload 
 
 ![image](https://user-images.githubusercontent.com/8803501/105675177-43babf80-5f1b-11eb-9504-ac27ec182f5e.png)
+
+
+
+4. เปิด Serial monitor โดยไปที่แถวเมนู Tools >> Serial monitor โดยตั้ง baudrate บน Serial monitor เป็น 9600 bps จากนั้นพิมพ์คำสั่ง AT กด Enter จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงบอร์ด Arduino สามารถติดต่อกับตัวโมดูลได้
+
+![image](https://user-images.githubusercontent.com/8803501/105676107-a2346d80-5f1c-11eb-9255-8db14a6242cb.png)
