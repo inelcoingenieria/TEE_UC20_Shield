@@ -19,3 +19,8 @@
 2.รันโปรแกรม ATCommand_serial เพิ่มใช้งานโหมด AT command โดยไปที่เมนู File >> Examples >> TEE_UC20_Shield >> ATCommand_serial 
 
 ![image](https://user-images.githubusercontent.com/8803501/105674613-5e406900-5f1a-11eb-8d9d-d8cefa0bf52b.png)
+
+
+3. ภายในโปรแกรม ATCommand_serial แก้ไข้ mySerial.begin(9600); เป็น mySerial.begin(115200); และทำการ upload 
+
+![image](https://user-images.githubusercontent.com/8803501/105675177-43babf80-5f1b-11eb-9504-ac27ec182f5e.png)
