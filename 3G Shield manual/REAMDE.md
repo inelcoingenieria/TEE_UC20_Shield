@@ -13,13 +13,14 @@
 
 หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจะตั้ง Baudrate เป็น 115200 bps)
 
-1.ให้ติดตั้ง Library TEE_UC20_Shield โดย Download จาก Lbrary manager โดยไปที่เมนู Sketch >> Include Library >> Mangae Libraries.. ทำการค้นหา TEE_UC20_Shield และติดตั้งดังภาพ
+
+1. ให้ติดตั้ง Library TEE_UC20_Shield โดย Download จาก Lbrary manager โดยไปที่เมนู Sketch >> Include Library >> Mangae Libraries.. ทำการค้นหา TEE_UC20_Shield และติดตั้งดังภาพ
 
 ![image](https://user-images.githubusercontent.com/8803501/105673919-4f0ceb80-5f19-11eb-94b1-946f3156957c.png)
 
 
 
-2.รันโปรแกรม ATCommand_serial เพื่อใช้งานโหมด AT command โดยไปที่เมนู File >> Examples >> TEE_UC20_Shield >> ATCommand_serial 
+2. รันโปรแกรม ATCommand_serial เพื่อใช้งานโหมด AT command โดยไปที่เมนู File >> Examples >> TEE_UC20_Shield >> ATCommand_serial 
 
 ![image](https://user-images.githubusercontent.com/8803501/105674613-5e406900-5f1a-11eb-8d9d-d8cefa0bf52b.png)
 
