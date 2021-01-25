@@ -9,3 +9,5 @@
 การต่อวงจรดังนี้ 
 
 ![Capture](https://user-images.githubusercontent.com/8803501/105672079-64cce180-5f16-11eb-97bb-f9cb0b266c2f.JPG)
+
+หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจากตั้ง Baudrate เป็น 115200 bps)
