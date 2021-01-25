@@ -30,3 +30,13 @@
 4. เปิด Serial monitor โดยไปที่แถวเมนู Tools >> Serial monitor โดยตั้ง baudrate บน Serial monitor เป็น 9600 bps จากนั้นพิมพ์คำสั่ง AT กด Enter จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงบอร์ด Arduino สามารถติดต่อกับตัวโมดูลได้
 
 ![image](https://user-images.githubusercontent.com/8803501/105676107-a2346d80-5f1c-11eb-9255-8db14a6242cb.png)
+
+
+5. ส่งคำสั่งเพื่อทำการเปลี่ยน baudrate เป็น 9600 bps โดยใชำคำสั่ง AT+IPR=9600;&W หากตัวโมดูลตอบกลับมาว่า OK หมายถึงได้ทำการเปลี่ยน baudrate เรียบร้อยแล้ว
+
+![image](https://user-images.githubusercontent.com/8803501/105676669-6cdc4f80-5f1d-11eb-9f08-042a43fcba1b.png)
+
+
+6.ทำการทดสอบโดยรันโปรแกรม NTP ไปที่ เมนู File >> Examples >> TEE_UC20_Shield >> TCP >> NTP จากนั้นทำการอัพโหลด และติดตามผลการเชื่อมต่อ NTP server 
+
+![image](https://user-images.githubusercontent.com/8803501/105677213-29ceac00-5f1e-11eb-93da-9d94ae7a927d.png)
