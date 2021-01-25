@@ -95,7 +95,7 @@ bool TCP::StartSend(unsigned char contexid)
 		{
 			if(gsm.read()=='>')
 			{
-				gsm.debug("send raedy\r\n");
+				gsm.debug("send ready\r\n");
 				return(true);
 			}	
 		}
