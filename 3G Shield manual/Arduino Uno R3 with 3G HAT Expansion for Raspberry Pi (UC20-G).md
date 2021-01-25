@@ -13,7 +13,8 @@
 ![Capture](https://user-images.githubusercontent.com/8803501/105672079-64cce180-5f16-11eb-97bb-f9cb0b266c2f.JPG)
 
 
-หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจะตั้ง Baudrate เป็น 115200 bps)
+หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจะตั้ง Baudrate เป็น 115200 bps) 
+- ให้ทำการกดเปิดโมดูลโดยการกดปุ่ม PWRKEY ค้างไว้ประมาณ 2 วินาที เมื่อโมดูลเปิดจะมี LED สีเหลืองติดขึ้นมา 
 
 
 1. ให้ติดตั้ง Library TEE_UC20_Shield โดย Download จาก Lbrary manager โดยไปที่เมนู Sketch >> Include Library >> Mangae Libraries.. ทำการค้นหา TEE_UC20_Shield และติดตั้งดังภาพ
