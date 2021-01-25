@@ -38,7 +38,7 @@
 
 ![image](https://user-images.githubusercontent.com/8803501/105676107-a2346d80-5f1c-11eb-9255-8db14a6242cb.png)
 
-5. ทำการตั้งค่า URC Port ให้ออกทาง UART โดยใชคำสั่ง AT+QURCCFG="urcport","uart1" จากนั้นตัวโมดูลจะตอบกลับมาว่า OK 
+5. ทำการตั้งค่า URC Port ให้ออกทาง UART โดยใชคำสั่ง AT+QURCCFG="urcport","uart1" จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงได้ทำการเปลี่ยนให้ URC Port ออกทาง UART แล้ว
 ![image](https://user-images.githubusercontent.com/8803501/105678007-356ea280-5f1f-11eb-81a1-211707cd2b70.png)
 
 
@@ -52,5 +52,5 @@
 ![image](https://user-images.githubusercontent.com/8803501/105677213-29ceac00-5f1e-11eb-93da-9d94ae7a927d.png)
 
 
-
+***หากตัวโมดูลยังไม่ตอบกลับ ให้กลับไปเช็คการต่อวงจรอีกครั้งว่าถูกต้องหรือไม่
 
