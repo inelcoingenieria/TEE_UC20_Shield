@@ -14,7 +14,7 @@
 
 
 หลังจากที่ต่อวงจรเสร็จเรียบร้อยแล้วจะต้องทำการตั้งค่า Baudrate ของตัว 3G HAT เป็น 9600 bps (โดย default โมดูลจะตั้ง Baudrate เป็น 115200 bps) 
-- ให้ทำการกดเปิดโมดูลโดยการกดปุ่ม PWRKEY ค้างไว้ประมาณ 2 วินาที เมื่อโมดูลเปิดจะมี LED สีเหลืองติดขึ้นมา 
+- ให้ทำการกดเปิดโมดูลโดยการกดปุ่ม PWRKEY ค้างไว้ประมาณ 1-2 วินาที เมื่อโมดูลเปิดจะมี LED สีเหลืองติดขึ้นมา 
 
 
 1. ให้ติดตั้ง Library TEE_UC20_Shield โดย Download จาก Lbrary manager โดยไปที่เมนู Sketch >> Include Library >> Mangae Libraries.. ทำการค้นหา TEE_UC20_Shield และติดตั้งดังภาพ
@@ -35,7 +35,9 @@
 
 
 
-4. เปิด Serial monitor โดยไปที่แถบเมนู Tools >> Serial monitor โดยตั้ง baudrate บน Serial monitor เป็น 9600 bps จากนั้นพิมพ์คำสั่ง AT กด Enter จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงบอร์ด Arduino สามารถติดต่อกับตัวโมดูลได้
+4. เปิด Serial monitor โดยไปที่แถบเมนู Tools >> Serial monitor โดยตั้ง baudrate บน Serial monitor เป็น 9600 bps และเลือกเป็น Both NL & CR ดังภาไ จากนั้นพิมพ์คำสั่ง AT กด Enter จากนั้นตัวโมดูลจะตอบกลับมาว่า OK ซึ่งหมายถึงบอร์ด Arduino สามารถติดต่อกับตัวโมดูลได้
+
+![image](https://user-images.githubusercontent.com/8803501/105795687-cdbc6400-5fbf-11eb-92d4-4999b3ed97dd.png)
 
 ![image](https://user-images.githubusercontent.com/8803501/105676107-a2346d80-5f1c-11eb-9255-8db14a6242cb.png)
 
