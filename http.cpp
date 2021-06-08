@@ -15,6 +15,12 @@ bool HTTP::begin(unsigned char context_ID)
 	gsm.print(F("AT+QHTTPCFG=\"responseheader\","));
 	gsm.print(context_ID,DEC);
 	gsm.println("");
+	/*
+	//AT+QHTTPCFG="requestheader",1 
+	gsm.println("AT+QHTTPCFG=\"requestheader\","); // enable requestheader
+        gsm.print(1, DEC);
+        gsm.println("");
+	*/
 	
 	int ret=0;
 	ret = http_ssl.sslversion(CONTEX,1);
