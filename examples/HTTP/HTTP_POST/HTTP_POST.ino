@@ -54,6 +54,27 @@ void setup()
   Serial.println(F("Send HTTP POST"));
   http.url("https://postman-echo.com/post");
   Serial.println(http.post("foo1=bar1&foo2=bar2")); // Body Raw Data
+  
+  /*
+  // Example if you would like to include header
+  gsm.println("AT+QHTTPCFG=\"requestheader\","); // enable requestheader 
+  gsm.print(1,DEC); 
+  gsm.println("");
+  
+  http.url("https://webhook.site/a7644aa5-5b26-4a63-a0df-ee654edbf253"); 
+
+  String header[] = {"POST /a7644aa5-5b26-4a63-a0df-ee654edbf253 HTTP/1.1\r\n",
+                     "Host: webhook.site\r\n",
+                     "Content-Type: application/x-www-form-urlencoded\r\n",
+                     "Content-Length: 23\r\n",
+                     "\r\n"
+                    };
+
+  String pay_load = "key5=value5&key6=value6";     //content-length: 23
+  String all_data = header[0] + header[1] + header[2] + header[3] + header[4] + pay_load ;
+  http.post(all_data);
+ */
+  
   Serial.println(F("Clear data in RAM"));
   file.Delete(RAM,"*");
   Serial.println(F("Save HTTP Response To RAM"));
